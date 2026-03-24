@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --alien-green: #33ff33;
+  --alien-green-dim: #1a8c1a;
+  --alien-green-dark: #0d4d0d;
+  --alien-red: #ff3333;
+  --alien-yellow: #ffaa00;
+  --alien-bg: #000000;
+  --alien-bg-card: #050505;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--alien-bg);
+  color: var(--alien-green);
+  font-family: var(--font-mono-alien), monospace;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.blink { animation: blink 1.2s step-end infinite; }
+
+.alien-card {
+  border: 1px solid var(--alien-green-dim);
+  background: var(--alien-bg-card);
+  position: relative;
+  padding: 16px;
+}
+.alien-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 8px;
+  width: 40px; height: 2px;
+  background: var(--alien-bg);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--alien-green-dark); }
+::-webkit-scrollbar-thumb:hover { background: var(--alien-green-dim); }
